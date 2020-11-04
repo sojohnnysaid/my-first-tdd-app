@@ -27,7 +27,7 @@ class DjangoConfigFilesTest(TestCase):
 
 
 class GitTest(TestCase):
-    
+
     def test_git_folder_created(self):
         assert '.git' in os.listdir(PROJECT_DIR)
 
@@ -37,7 +37,6 @@ class GitTest(TestCase):
 
 class DjangoWelcomePageTest(TestCase):
 
-    def test_django_welcome_page_response(self):
+    def test_django_welcome_page_response_ok(self):
         response = self.client.get('/default-welcome-page/')
         assert response.status_code == 200
-        assert 'Django: the Web framework' in response.content.decode('utf8')
