@@ -2,8 +2,7 @@ import django
 from django.test import TestCase
 import selenium
 import os
-
-PROJECT_DIR = '/Users/johnyzaguirre/Desktop/my-first-tdd-app'
+from myproject.settings import BASE_DIR
 
 class DependenciesInstalledTest(TestCase):
     
@@ -17,22 +16,22 @@ class DependenciesInstalledTest(TestCase):
 class DjangoConfigFilesTest(TestCase):
     
     def test_requirements_file_created(self):
-        assert 'requirements.txt' in os.listdir(PROJECT_DIR)
+        assert 'requirements.txt' in os.listdir(BASE_DIR)
 
     def test_pytest_ini_file_created(self):
-        assert 'pytest.ini' in os.listdir(PROJECT_DIR)
+        assert 'pytest.ini' in os.listdir(BASE_DIR)
 
     def test_django_project_created(self):
-        assert 'manage.py' in os.listdir(PROJECT_DIR)
+        assert 'manage.py' in os.listdir(BASE_DIR)
 
 
 class GitTest(TestCase):
 
     def test_git_folder_created(self):
-        assert '.git' in os.listdir(PROJECT_DIR)
+        assert '.git' in os.listdir(BASE_DIR)
 
     def test_git_ignore_created(self):
-        assert '.gitignore' in os.listdir(PROJECT_DIR)
+        assert '.gitignore' in os.listdir(BASE_DIR)
 
 
 class DjangoWelcomePageTest(TestCase):
