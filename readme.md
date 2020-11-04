@@ -1,11 +1,13 @@
 # My First TDD app
 
-The purpose of this exercise is to write a test before writing any application code. The app will contain the following pages:
+The purpose of this exercise is to write a test before writing any application code. The web app will have the following:
 
 ## homepage
-a page containing links to each individual app page
+a page containing "mini apps"
 
-## string reverse
+## mini apps
+
+### string reverse
 the user will enter a string and on submission a page will load with the user's string in reverse
 
 **todo**-create more simple app pages
