@@ -1,8 +1,8 @@
-import django
+from myproject.settings import BASE_DIR
 from django.test import TestCase
 import selenium
+import django
 import os
-from myproject.settings import BASE_DIR
 
 class DependenciesInstalledTest(TestCase):
     
@@ -39,3 +39,9 @@ class DjangoWelcomePageTest(TestCase):
     def test_django_welcome_page_response_ok(self):
         response = self.client.get('/default-welcome-page/')
         assert response.status_code == 200
+
+
+class DjangoAppTest(TestCase):
+
+    def test_django_app_created(self):
+        assert 'myapp' in os.listdir(BASE_DIR)
