@@ -44,4 +44,4 @@ class DjangoWelcomePageTest(TestCase):
 class DjangoAppTest(TestCase):
 
     def test_django_app_created(self):
-        assert 'myapp' in os.listdir(BASE_DIR)
+        assert 'home' in os.listdir(BASE_DIR)

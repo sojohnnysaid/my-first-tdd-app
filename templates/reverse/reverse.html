@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Reverse{% endblock title %}
+
+{% block content %}
+  <form method="POST" action="/reverse/">
+    <input name="item_to_reverse" type="text" id="string-reverse-input" placeholder='Enter a word'>
+    {% csrf_token %}
+  </form>
+  {% if request.method == 'POST' %}
+    <br>
+    <p>string reversed!</p>
+    --- <span class="p-1 badge-success rounded" id='string-reverse-result'>{{reversed_word}}</span> ---
+  {% endif %}
+{% endblock content %}

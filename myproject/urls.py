@@ -3,7 +3,8 @@ from django.contrib import admin
 from django.urls import path, include
 
 urlpatterns = [
+    path('', include('home.urls')),
     path('default-welcome-page/', debug.default_urlconf),
     path('admin/', admin.site.urls),
-    path('', include('myapp.urls'))
+    path('reverse/', include('reverse.urls')),
 ]
