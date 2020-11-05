@@ -1,0 +1,18 @@
+- apps should be in separate pages
+- app ideas:
+    mini dice roll game:
+        player inputs name and presses start round
+        - check if player has played before display appropriate content
+            yes:
+                round he's now in (how many games he's played + 1)
+                best score
+            no:
+                round: 1
+                best score: 0
+        - player presses roll dice
+            a random number from 2-12 appears
+        - player has 3 rolls
+            show rolls left
+        - Finally show total
+            If total is greater than best score, update best score to equal the current total
+            
