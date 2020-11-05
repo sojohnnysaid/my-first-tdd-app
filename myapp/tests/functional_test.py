@@ -12,7 +12,7 @@ class HomePageTest(FunctionalTest):
         header_text = self.browser.find_element_by_tag_name('h1').text
         assert header_text == "mini apps"
 
-        # the first app is call "string reverse"
+        # the first app is called "string reverse"
         string_reverse_title = self.browser.find_element_by_id('string-reverse-title').text
         assert string_reverse_title == "string reverse"
 
