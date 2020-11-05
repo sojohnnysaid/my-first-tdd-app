@@ -8,6 +8,6 @@ a page containing "mini apps"
 ## mini apps
 
 ### string reverse
-the user will enter a string and on submission a page will load with the user's string in reverse
+returns the user's submitted string in reverse
 
 **todo**-create more simple apps

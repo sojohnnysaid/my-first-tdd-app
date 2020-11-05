@@ -32,4 +32,4 @@ class HomePageTest(FunctionalTest):
         assert string_reverse_result == 'gorf'
 
         # happy with the results he moves on to the next mini app
-        self.fail('write more tests!')
+        #self.fail('write more tests!')

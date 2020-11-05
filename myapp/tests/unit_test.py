@@ -10,7 +10,6 @@ from myapp.views import home_page
 # url rules decide which view function resolve the url
 # view function returns an http response
 
-
 # testing:
 # can we resolve the url to a view?
 # can we make the view return html?
@@ -22,9 +21,16 @@ class HomePageTest(TestCase):
         assert view.func == home_page
 
     def test_home_page_uses_correct_template(self):
-        response = self.client.get('')
-        assert response.content.decode() == render_to_string('home.html')
+        response = self.client.get('/')
+        self.assertTemplateUsed(response, 'home.html')
 
     def test_home_page_has_correct_title(self):
         response = self.client.get('')
         assert 'mini apps' in response.content.decode()
+
+
+class ReverseAppTest(TestCase):
+
+    def test_view_reverses_form_submission_string_back_to_template(self):
+        response = self.client.post('/', data={'item_to_reverse': 'frog'})
+        assert 'gorf' in response.content.decode()

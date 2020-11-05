@@ -9,9 +9,13 @@
 <h1>mini apps</h1>
 
 <h2 id='string-reverse-title'>string reverse</h2>
-<form action="">
-    <input type="text" id="string-reverse-input" placeholder='Enter a word'>
-    <input type="button" value="submit">
+<form method="POST" action="">
+    <input name="item_to_reverse" type="text" id="string-reverse-input" placeholder='Enter a word'>
+    {% csrf_token %}
 </form>
+{% if request.method == 'POST' %}
+    <p id='string-reverse-result'>{{reversed_word}}</p>
+{% endif %}
+<hr>
 </body>
 </html>
