@@ -21,9 +21,10 @@ class HomePageTest(TestCase):
         view = resolve('/')
         assert view.func == home_page
 
-
     def test_home_page_uses_correct_template(self):
         response = self.client.get('')
         assert response.content.decode() == render_to_string('home.html')
 
-
+    def test_home_page_has_correct_title(self):
+        response = self.client.get('')
+        assert 'mini apps' in response.content.decode()
