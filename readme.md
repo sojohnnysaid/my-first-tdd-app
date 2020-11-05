@@ -10,4 +10,4 @@ a page containing "mini apps"
 ### string reverse
 the user will enter a string and on submission a page will load with the user's string in reverse
 
-**todo**-create more simple app pages
+**todo**-create more simple apps
