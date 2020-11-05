@@ -12,6 +12,15 @@ class HomePageTest(FunctionalTest):
         header_text = self.browser.find_element_by_tag_name('h1').text
         assert header_text == "mini apps"
 
+        # John likes the design of the homepage with the components centered
+        self.browser.set_window_size(1024,768)
+        inputbox = self.browser.find_element_by_id('string-reverse-input')
+        self.assertAlmostEqual(
+            inputbox.location['x'] + (inputbox.size['width'] / 2),
+            512,
+            delta=10
+        )
+
         # the first app is called "string reverse"
         string_reverse_title = self.browser.find_element_by_id('string-reverse-title').text
         assert string_reverse_title == "string reverse"
