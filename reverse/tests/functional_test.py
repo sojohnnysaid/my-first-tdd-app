@@ -4,7 +4,7 @@ from selenium.webdriver.common.keys import Keys
 
 
 class StringReverseAppTest(FunctionalTest):
-    def test_can_visit_string_reverse_to_view_app_links(self):
+    def test_can_visit_string_reverse_app(self):
         # John goes to check out the reverse mini app
         self.browser.get(f'{self.live_server_url}/reverse')
 
