@@ -15,14 +15,14 @@ from home.views import home
 
 class HomePageTest(TestCase):
 
-    def test_root_url_resolves_to_home_page_view(self):
+    def test_url_resolves_to_correct_view(self):
         view = resolve('/')
         assert view.func == home
 
-    def test_home_page_uses_correct_template(self):
+    def test_uses_correct_template(self):
         response = self.client.get('/')
         self.assertTemplateUsed(response, 'home/home.html')
 
-    def test_home_page_has_correct_title(self):
+    def test_has_correct_title(self):
         response = self.client.get('')
         assert 'mini apps' in response.content.decode()
