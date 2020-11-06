@@ -3,6 +3,14 @@ from django.urls import resolve
 
 from reverse.views import reverse
 
+# http request -> url
+# url rules decide which view function resolve the url
+# view function returns an http response
+
+# testing:
+# can we resolve the url to a view?
+# can we make the view return html?
+
 class ReverseAppTest(TestCase):
 
     def test_url_resolves_to_correct_view(self):
