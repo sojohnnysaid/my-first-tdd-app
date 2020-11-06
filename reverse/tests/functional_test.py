@@ -28,5 +28,5 @@ class StringReverseAppTest(FunctionalTest):
             'string-reverse-result').text
         assert string_reverse_result == 'gorf'
 
-        # happy with the results he moves on to the next mini app
-        #self.fail('write more tests!')
+        # happy with the results he goes back to the homepage
+        self.browser.find_element_by_link_text(self.PROJECT_TITLE).click()
