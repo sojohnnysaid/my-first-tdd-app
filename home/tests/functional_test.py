@@ -1,15 +1,17 @@
+from selenium.webdriver.common.by import By
 from tests.base_functional_test import FunctionalTest
 
+PROJECT_TITLE = 'mini apps 🍦'
 
 class HomePageTest(FunctionalTest):
     def test_can_visit_homepage_to_view_app_links(self):
         # John wants to try some apps on our website so he goes to the homepage
         self.browser.get(self.live_server_url)
 
-        # He notices the title and header say "mini apps"
-        assert self.browser.title == "mini apps"
+        # He notices the title and header
+        assert self.browser.title == PROJECT_TITLE
         header_text = self.browser.find_element_by_tag_name('h1').text
-        assert header_text == "mini apps"
+        assert header_text == PROJECT_TITLE
 
         # John likes the design of the homepage with the app list centered
         self.browser.set_window_size(1024, 768)
@@ -19,3 +21,10 @@ class HomePageTest(FunctionalTest):
             512,
             delta=10
         )
+
+        # The app list items are links
+        list_item = self.browser.find_elements_by_tag_name('a')[0]
+        assert list_item.get_attribute('href') == f'{self.live_server_url}/reverse/'
+
+        # John clicks the reverse link and it brings him to the reverse app
+        self.browser.find_element_by_link_text('reverse').click()
