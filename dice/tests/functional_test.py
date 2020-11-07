@@ -18,7 +18,7 @@ class DiceAppTest(FunctionalTest):
         header_text = self.browser.find_element_by_tag_name('h2').text
         assert header_text == 'Dice'
 
-        # There is some text explaining the rules
+        # There is text explaining the rules
         rules = self.browser.find_element_by_id('rules').text
         self.assertRegex(rules,'.+')
 
