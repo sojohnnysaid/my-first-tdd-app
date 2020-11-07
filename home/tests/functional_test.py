@@ -22,6 +22,8 @@ class HomePageTest(FunctionalTest):
         )
 
         # The app list items are links
+        app_list = self.browser.find_elements_by_tag_name('li')
+        assert len(app_list) > 0
         list_item = self.browser.find_element_by_link_text('reverse')
         assert list_item.get_attribute('href') == f'{self.live_server_url}/reverse/'
 
