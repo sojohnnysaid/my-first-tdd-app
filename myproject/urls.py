@@ -7,4 +7,5 @@ urlpatterns = [
     path('default-welcome-page/', debug.default_urlconf),
     path('admin/', admin.site.urls),
     path('reverse/', include('reverse.urls')),
+    path('dice/', include('dice.urls')),
 ]

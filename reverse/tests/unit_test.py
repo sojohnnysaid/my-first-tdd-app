@@ -13,6 +13,9 @@ from reverse.views import reverse
 
 class ReverseAppTest(TestCase):
 
+    def test_page_response_ok(self):
+        assert self.client.get('/reverse/').status_code == 200
+
     def test_url_resolves_to_correct_view(self):
         view = resolve('/reverse/')
         assert view.func == reverse
@@ -21,9 +24,9 @@ class ReverseAppTest(TestCase):
         response = self.client.get('/reverse/')
         self.assertTemplateUsed(response, 'reverse/reverse.html')
 
-    def test_has_correct_title(self):
+    def test_has_correct_header(self):
         response = self.client.get('/reverse/')
-        assert 'reverse' in response.content.decode()
+        assert "<h2 id='app-title'>Reverse</h2>" in response.content.decode()
 
     def test_view_reverses_submitted_text(self):
         response = self.client.post('/reverse/', data={'item_to_reverse': 'frog'})

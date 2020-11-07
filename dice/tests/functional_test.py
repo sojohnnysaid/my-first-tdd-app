@@ -11,28 +11,27 @@ class DiceAppTest(FunctionalTest):
         # John wants to play the dice game
         # so he goes to the dice page from the homepage
         self.browser.get(f'{self.live_server_url}')
-
         self.browser.find_element_by_link_text('dice').click()
-
         self.browser.get(f'{self.live_server_url}/dice')
 
         # He notices the header says "Dice"
-        header_text = self.browser.find_element_by_tag_name('h2')
+        header_text = self.browser.find_element_by_tag_name('h2').text
         assert header_text == 'Dice'
 
         # There is some text explaining the rules
-        rules = self.browser.find_element_by_id('rules')
+        rules = self.browser.find_element_by_id('rules').text
         self.assertRegex(rules,'.+')
 
         # There is an inputbox that says 'enter player name'
-        inputbox = self.browser.find_element_by_id('player_name_inputbox')
+        inputbox = self.browser.find_element_by_name('player')
         assert inputbox.get_attribute('placeholder') == 'enter player name'
 
         # John enters his player name 'Questy'
         inputbox.send_keys('Questy')
 
         # underneath the input box is a button that says play
-        button = self.browser.find_element_by_id('play_button')
+        button = self.browser.find_element_by_tag_name('button')
+        assert button.text == 'Play'
 
         # he clicks the button and is taken to a new page
         button.click()
