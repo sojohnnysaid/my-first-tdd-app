@@ -7,7 +7,7 @@ from selenium.webdriver.common.keys import Keys
 class DiceAppTest(FunctionalTest):
 
     @skip
-    def test_can_visit_dice_app(self):
+    def test_can_visit_dice_start_page(self):
         # John wants to play the dice game
         # so he goes to the dice page
         self.browser.get(f'{self.live_server_url}/dice')
@@ -17,16 +17,25 @@ class DiceAppTest(FunctionalTest):
         assert header_text == 'Dice'
 
         # There is some text explaining the rules
+        rules = self.browser.find_element_by_id('rules')
+        self.assertRegex(rules,'.+')
 
-        # There is an input box that says 'enter player name'
+        # There is an inputbox that says 'enter player name'
+        inputbox = self.browser.find_element_by_id('player_name_inputbox')
+        assert inputbox.get_attribute('placeholder') == 'enter player name'
 
         # John enters his player name 'Questy'
+        inputbox.send_keys('Questy')
 
         # underneath the input box is a button that says play
+        button = self.browser.find_element_by_id('play_button')
 
         # he clicks the button and is taken to a new page
+        button.click()
 
+    def test_can_start_new_dice_game(self):
         # the url now points to /game
+        self.browser.get(f'{self.live_server_url}/dice/game')
 
         # the page now shows:
         # player name: Questy
@@ -35,6 +44,19 @@ class DiceAppTest(FunctionalTest):
         # score to beat: (a random number from 2-24)
         # total score: 0
 
+    def test_can_start_dice_game_from_last_visit(self):
+        # the url now points to /game
+        self.browser.get(f'{self.live_server_url}/dice/game')
+
+        # John has played the first level already
+        # the page now shows:
+        # player name: Questy
+        # level: 2
+        # rolls left: 2
+        # score to beat: (a random number from 2-24)
+        # total score: 0
+
+    @skip
     def player_wins_dice_match(self):
         pass
         # the page now shows:
@@ -61,6 +83,7 @@ class DiceAppTest(FunctionalTest):
 
         # finally John notices a link that reads 'go to next level'
 
+    @skip
     def player_loses_dice_match(self):
         pass
         # the page now shows:
