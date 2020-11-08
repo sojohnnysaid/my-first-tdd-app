@@ -8,7 +8,7 @@
     Highest score wins.<br>
     Your progress is saved.
 </p>
-<form action='' method='post'>
+<form action='/dice/game/' method='post'>
     <input type='text' name='player' placeholder='enter player name'>
     <button type='submit'>Play</button>
     {% csrf_token %}

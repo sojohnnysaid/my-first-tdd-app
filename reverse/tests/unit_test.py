@@ -26,7 +26,7 @@ class ReverseAppTest(TestCase):
 
     def test_has_correct_header(self):
         response = self.client.get('/reverse/')
-        assert "<h2 id='app-title'>Reverse</h2>" in response.content.decode()
+        assert "<h2 id='header'>Reverse</h2>" in response.content.decode()
 
     def test_view_reverses_submitted_text(self):
         response = self.client.post('/reverse/', data={'item_to_reverse': 'frog'})

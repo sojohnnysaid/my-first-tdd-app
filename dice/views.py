@@ -2,5 +2,8 @@ from django.shortcuts import render
 
 # Create your views here.
 
-def dice(request):
-    return render(request, 'dice/dice.html')
+def start(request):
+    return render(request, 'dice/start.html')
+
+def game(request):
+    return render(request, 'dice/game.html')

@@ -6,13 +6,13 @@ from selenium.webdriver.common.keys import Keys
 
 class DiceAppTest(FunctionalTest):
 
-    
     def test_can_visit_dice_start_page(self):
+
         # John wants to play the dice game
         # so he goes to the dice page from the homepage
         self.browser.get(f'{self.live_server_url}')
         self.browser.find_element_by_link_text('dice').click()
-        self.browser.get(f'{self.live_server_url}/dice')
+        self.browser.get(f'{self.live_server_url}/dice/start')
 
         # He notices the header says "Dice"
         header_text = self.browser.find_element_by_tag_name('h2').text
@@ -33,33 +33,60 @@ class DiceAppTest(FunctionalTest):
         button = self.browser.find_element_by_tag_name('button')
         assert button.text == 'Play'
 
-        # he clicks the button and is taken to a new page
+
+
+
+    def test_any_player_can_start_a_new_dice_game(self):
+
+        #-------------------
+        ## John's user story
+        #-------------------
+
+        # John is on the dice game start page
+        self.browser.get(f'{self.live_server_url}/dice/start')
+
+        # ready to play John creates a player name
+        inputbox = self.browser.find_element_by_name('player')
+        inputbox.send_keys('Questy')
+
+        # then clicks the play button and is taken to a new page
+        button = self.browser.find_element_by_tag_name('button')
         button.click()
-
-    @skip
-    def test_can_start_new_dice_game(self):
+        
         # the url now points to /game
-        self.browser.get(f'{self.live_server_url}/dice/game')
+        assert self.browser.current_url == f'{self.live_server_url}/dice/game/'
 
         # the page now shows:
         # player name: Questy
+        player = self.browser.find_element_by_id('player').text
+        assert player == 'Player: Questy'
+
         # level: 1
-        # rolls left: 2
-        # score to beat: (a random number from 2-24)
-        # total score: 0
+        level = self.browser.find_element_by_tag_name('h2').text
+        assert level == 'Level: 1'
 
-    @skip
-    def test_can_start_dice_game_from_last_visit(self):
-        # the url now points to /game
-        self.browser.get(f'{self.live_server_url}/dice/game')
-
-        # John has played the first level already
-        # the page now shows:
-        # player name: Questy
-        # level: 2
         # rolls left: 2
+        rolls = self.browser.find_element_by_id('rolls').text
+        assert rolls == 'Rolls: 2'
+
         # score to beat: (a random number from 2-24)
+        score_to_beat = int(self.browser.find_element_by_id('score_to_beat').text)
+        assert score_to_beat > 1 and score_to_beat < 25
+
         # total score: 0
+        score = self.browser.find_element_by_id('score').text
+        assert score == 'Score: 0'
+
+        # John sees a button to roll the dice
+        button_text = self.browser.find_element_by_tag_name('button').text
+        assert button_text == 'Roll Dice!'
+
+        #-------------------
+        ## Jane's user story
+        #-------------------
+        
+
+
 
     @skip
     def player_wins_dice_match(self):
@@ -116,3 +143,17 @@ class DiceAppTest(FunctionalTest):
         # finally John notices a link that reads 'try again'
 
 
+
+
+    @skip
+    def test_can_start_dice_game_from_last_visit(self):
+        # the url now points to /game
+        self.browser.get(f'{self.live_server_url}/dice/game')
+
+        # John has played the first level already
+        # the page now shows:
+        # player name: Questy
+        # level: 2
+        # rolls left: 2
+        # score to beat: (a random number from 2-24)
+        # total score: 0
