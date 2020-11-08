@@ -4,6 +4,7 @@ from tests.base_functional_test import FunctionalTest
 class DiceAppStartTest(FunctionalTest):
 
     def test_any_user_can_start_a_game(self):
+        pass
         # John is on the dice page and wants to play
 
         # He sees an input that asks for his player name
@@ -18,7 +19,7 @@ class DiceAppStartTest(FunctionalTest):
 
         # He sees his player name, score, rolls left, and score to beat
 
-        # He has a score of 0, 2 rolls left and the score to beat is 8
+        # He has a score of 0, 2 rolls left and the score to beat is random()
 
         # John sees a button that says roll
 
