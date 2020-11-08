@@ -1,7 +1,7 @@
 from django.test import TestCase
 from django.urls import resolve
 
-from reverse.views import reverse
+from reverse import views
 
 # http request -> url
 # url rules decide which view function resolve the url
@@ -18,7 +18,7 @@ class ReverseAppTest(TestCase):
 
     def test_url_resolves_to_correct_view(self):
         view = resolve('/reverse/')
-        assert view.func == reverse
+        assert view.func == views.reverse
 
     def test_uses_correct_template(self):
         response = self.client.get('/reverse/')

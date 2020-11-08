@@ -1,4 +1,3 @@
-from selenium.webdriver.common.by import By
 from tests.base_functional_test import FunctionalTest
 
 

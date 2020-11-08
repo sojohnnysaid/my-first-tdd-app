@@ -1,5 +1,23 @@
 {% extends 'base.html' %}
 
-{% block title %}Guess{% endblock title %}
+{% block title %}Guess the Number{% endblock title %}
 
-{% block content %}Guess content{% endblock content %}
+{% block content %}
+{% if request.method == 'POST' %}
+<p id='result'>
+    you answered correctly! Maybe incorrectly who know!
+</p>
+<a href="/guess/">play again</a>
+{% else %}
+<p id='rules'>
+    Rules<br>
+    Enter a number from 1 to 10<br>
+    Submit your guess by pressing enter<br>
+    Match the random number to win
+</p>
+<form action='' method='post'>
+    <input type='text' name='player_guess' placeholder='enter guess'>
+    {% csrf_token %}
+</form>
+{% endif %}
+{% endblock content %}
