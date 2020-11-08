@@ -71,6 +71,12 @@ class GuessAppTest(TestCase):
 
     def test_error_message_shown_in_template(self):
         response = self.client.post('/guess/',{'player_guess': 'fja;'}, follow=True)
-        self.assertContains(response, "please enter a value from 1 to 10")
+        self.assertContains(response, 'please enter a value from 1 to 10')
 
     # to do test for all possible inputs from user
+    def test_player_guess_works_with_all_valid_inputs(self):
+        param_list = list(range(1,11))
+        for player_guess in param_list:
+            response = self.client.post('/guess/',{'player_guess': str(player_guess)}, follow=True)
+            with self.subTest():
+                self.assertNotContains(response, 'please enter a value from 1 to 10',msg_prefix=f'**current player guess:{player_guess}** ')
