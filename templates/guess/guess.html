@@ -4,34 +4,34 @@
 
 {% block content %}
 {% if request.method == 'POST' %}
-<p>Generated Number: <span id='generated_number'>{{generated_number}}</span></p>
-<p id='result'>
-    Your Guess: <span id='player_guess'>{{player_guess}}</span><br>
-    {% if player_guess == generated_number %}
-        You answered correctly!
-    {% else %}
-        You answered incorrectly =(
-    {% endif %}
-</p>
-<a href="/guess/">play again</a>
+    <p>Generated Number: <span id='generated_number'>{{generated_number}}</span></p>
+    <p id='result'>
+        Your Guess: <span id='player_guess'>{{player_guess}}</span><br>
+        {% if player_guess == generated_number %}
+            You answered correctly!
+        {% else %}
+            You answered incorrectly =(
+        {% endif %}
+    </p>
+    <a href="/guess/">play again</a>
 {% else %}
-{% endif %}
-<p id='rules'>
-    Rules<br>
-    Enter a number from 1 to 10<br>
-    Submit your guess by pressing enter<br>
-    Match the random number to win
-</p>
-<form action='' method='post'>
-    <input type='text' name='player_guess' placeholder='enter guess'>
-    {% csrf_token %}
-</form>
-{% if messages %}
-<br>
-<ul class="messages list-group">
-    {% for message in messages %}
-    <li{% if message.tags %} class="list-group-item {{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
+    <p id='rules'>
+        Rules<br>
+        Enter a number from 1 to 10<br>
+        Submit your guess by pressing enter<br>
+        Match the random number to win
+    </p>
+    <form action='' method='post'>
+        <input type='text' name='player_guess' placeholder='enter guess'>
+        {% csrf_token %}
+    </form>
+        {% if messages %}
+            <br>
+            <ul class="messages list-group">
+                {% for message in messages %}
+                    <li{% if message.tags %} class="list-group-item {{ message.tags }}"{% endif %}>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
 {% endif %}
 {% endblock content %}

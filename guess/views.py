@@ -13,7 +13,7 @@ from random import randint
 def guess(request):
     if request.method == 'POST':
         player_guess = request.POST.get('player_guess')
-        if(player_guess.isdigit() and int(player_guess) in range(1,10)):
+        if(player_guess.isdigit() and int(player_guess) in range(1,11)):
             generated_number = str(randint(1,10))
             return render(
                 request, 
