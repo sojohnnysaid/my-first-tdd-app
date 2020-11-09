@@ -8,4 +8,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('reverse/', include('reverse.urls')),
     path('guess/', include('guess.urls')),
+     path('guestbook/', include('guestbook.urls')),
 ]
