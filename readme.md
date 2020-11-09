@@ -23,6 +23,13 @@ sign into the guestbook and join the list of other guests who are probably just 
 - source env/bin/activate
 - pip install --upgrade pip
 - pip install -r requirements.txt
-- pytest to see happy green lines
 - python manage.py runserver
 - PROFIT!
+
+## If you are interested in running the tests
+you can run the unit tests without any issues with the command `pytest */tests/unit_*`
+**caution** if you want to run the functional tests you are going to need the chrome driver
+for selenium. The short story is you will have to download the executable file, copy that into
+your /bin directory and add the full path to your $PATH variable. For mac I downloaded chromedriver
+then `mv chromedriver /usr/local/bin` and finally `export PATH=/usr/local/bin/chromedriver:$PATH`.
+Your milage may vary. Happy testing!
