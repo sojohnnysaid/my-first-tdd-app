@@ -3,5 +3,9 @@
 {% block title %}Guestbook{% endblock title %}
 
 {% block content %}
-Guestbook stuff
+<ul class="list-group">
+{% for guest in guestbook %}
+    <li class="list-group-item">{{guest.name}}</li>
+{% endfor %}
+</ul>
 {% endblock content %}

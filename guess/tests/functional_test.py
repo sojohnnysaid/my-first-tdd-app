@@ -1,10 +1,11 @@
+from unittest.case import skip
 from selenium.webdriver.support.wait import time
 from tests.base_functional_test import FunctionalTest
 from selenium.webdriver.common.keys import Keys
 from unittest.mock import patch
 
 '''
-guess               a number guessing game
+guess           a number guessing game
 ------------------------------
 how to win:     player's guess has to match the generated number
 actors:         player
@@ -12,7 +13,6 @@ inputs:         player_guess, generated_number
 outputs:        result
 scenarios:      player wins, player loses
 '''
-
 
 class GuessAppTest(FunctionalTest):
     
@@ -31,7 +31,7 @@ class GuessAppTest(FunctionalTest):
         assert 'Rules' in rules_text
 
         # Filled with determination, John guesses the number 8
-        # and filles in the inputbox that says enter guess
+        # and fills in the inputbox that says enter guess
         inputbox = self.browser.find_element_by_name('player_guess')
         inputbox.send_keys('8')
 
