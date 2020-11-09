@@ -14,16 +14,16 @@ from guestbook import views
 class GuestbookAppTest(TestCase):
 
     def test_page_response_ok(self):
-        assert self.client.get('/guestbook/').status_code == 200
+        assert self.client.get('/guestbook/new/').status_code == 200
 
     def test_url_resolves_to_correct_view(self):
-        view = resolve('/guestbook/')
-        assert view.func == views.guestbook
+        view = resolve('/guestbook/new/')
+        assert view.func.__name__ == views.GuestCreateView.as_view().__name__
 
     def test_uses_correct_template(self):
-        response = self.client.get('/guestbook/')
-        self.assertTemplateUsed(response, 'guestbook/guestbook.html')
+        response = self.client.get('/guestbook/new/')
+        self.assertTemplateUsed(response, 'guestbook/new_guest.html')
 
     def test_has_correct_header(self):
-        response = self.client.get('/guestbook/')
-        assert "<h2 id='header'>Guestbook</h2>" in response.content.decode()
+        response = self.client.get('/guestbook/new/')
+        assert "<h2 id='header'>Sign our Guestbook</h2>" in response.content.decode()
