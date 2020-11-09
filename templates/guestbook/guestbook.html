@@ -3,9 +3,13 @@
 {% block title %}Guestbook{% endblock title %}
 
 {% block content %}
-<ul class="list-group">
-{% for guest in guestbook %}
-    <li class="list-group-item">{{guest.name}}</li>
-{% endfor %}
-</ul>
+<div class="row">
+    <div class="col-md-2 offset-md-5 col-6 offset-3">
+        <ul class="list-group" id="app-list">
+        {% for guest in guestbook %}
+            <li class="list-group-item">{{guest.name}}</li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
 {% endblock content %}
