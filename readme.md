@@ -3,18 +3,18 @@
 The purpose of this exercise is to write a test before writing any application code. The web app will have the following:
 
 ## homepage
-a page containing "mini apps"
+A page containing the list of "mini apps" links
 
 ## mini apps
 
 ### string reverse
-returns the user's submitted string in reverse
+Returns the user's submitted string in reverse
 
 ### guess
-guess a number from 1-10 and see if you match with the randomly generated number
+Guess a number from 1-10. See if your number matches the randomly generated number
 
 ### guestbook
-sign into the guestbook and join the list of other guests who are probably just you
+Sign into the guestbook and join the list of other guests who are probably just you
 
 # Installation
 - clone the repo
@@ -27,7 +27,7 @@ sign into the guestbook and join the list of other guests who are probably just 
 - PROFIT!
 
 ## If you are interested in running the tests
-you can run the unit tests without any issues with the command `pytest */tests/unit_*`
+You can run the unit tests without any issues with the command `pytest */tests/unit_*`
 
 
 **caution** 
