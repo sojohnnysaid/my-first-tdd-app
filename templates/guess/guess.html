@@ -22,7 +22,7 @@
         Match the random number to win
     </p>
     <form action='' method='post'>
-        <input type='text' name='player_guess' placeholder='enter guess'>
+        <input type='text' name='player_guess' placeholder='enter guess' autofocus>
         {% csrf_token %}
     </form>
         {% if messages %}

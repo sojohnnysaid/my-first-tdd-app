@@ -4,7 +4,7 @@
 
 {% block content %}
   <form method="POST" action="/reverse/">
-    <input name="item_to_reverse" type="text" id="string-reverse-input" placeholder='Enter a word'>
+    <input name="item_to_reverse" type="text" id="string-reverse-input" placeholder='Enter a word' autofocus>
     {% csrf_token %}
   </form>
   {% if request.method == 'POST' %}
